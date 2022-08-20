@@ -3,16 +3,16 @@ package com.example.jetbmicalculator
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -32,7 +32,28 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.padding(20.dp),
                         horizontalAlignment = Alignment.Start,
                     ) {
+                        // アプリ名
                         Text(text = "BMI計算アプリ", fontSize = 26.sp, fontWeight = FontWeight.ExtraBold)
+                        Spacer(modifier = Modifier.height(30.dp))
+
+                        // 身長
+                        Text(
+                            text = "身長(cm)",
+                            color = Color(0xFFF85F6A),
+                            fontWeight = FontWeight.Bold,
+                        )
+                        TextField(
+                            modifier = Modifier.fillMaxWidth(),
+                            value = "",
+                            onValueChange = {},
+                            placeholder = { Text(text = "170") },
+                            colors = TextFieldDefaults.textFieldColors(
+                                textColor = Color.Gray,
+                                backgroundColor = Color.Transparent,
+                            ),
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            singleLine = true,
+                        )
                     }
                 }
             }
